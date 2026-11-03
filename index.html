@@ -6,73 +6,131 @@
 <title>Stromkostenrechner 2026: Stromkosten berechnen &amp; sparen – EnergyToolkit</title>
 <meta name="description" content="EnergyToolkit ist eine kostenlose deutsche Sammlung von Stromkostenrechnern: Stromkosten pro Tag, Monat und Jahr berechnen, ohne Anmeldung, ohne Tracker, direkt im Browser.">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#17222b;background:#f4f7f5;line-height:1.6}
-a{color:#0b7a4d}header{background:#0f2a3d;color:#fff}header .wrap,main .wrap,footer .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
-header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
-.logo{font-weight:800;font-size:22px;letter-spacing:.2px}.logo span{color:#2fd08a}
-nav a{color:#d7e6de;text-decoration:none;margin-left:18px;font-weight:600}nav a:hover{color:#fff}
-.hero{background:#0f2a3d;color:#fff;padding:28px 0 48px}.hero h1{font-size:42px;line-height:1.15;margin:0 0 12px;max-width:720px}.hero p{color:#cfe3d8;font-size:18px;max-width:720px;margin:0 0 22px}
-.badges span{display:inline-block;background:#14344a;border:1px solid #2a4a5e;color:#d7e6de;border-radius:999px;padding:5px 12px;margin:0 8px 8px 0;font-size:14px}
-.btn{display:inline-block;background:#12a76b;color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:10px}.btn:hover{background:#0d8a57}
-.btn2{display:inline-block;border:1px solid #7fb69e;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;margin-left:10px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-26px}.stat{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 18px rgba(15,42,61,.08);text-align:center}.stat b{font-size:26px;color:#0f2a3d;display:block}.stat span{color:#5b6b73;font-size:14px}
-section{padding:34px 0}h2{font-size:28px;margin:0 0 8px;color:#0f2a3d}.lead{color:#52626b;max-width:760px;margin:0 0 20px}
-.formula{background:#fff;border:1px solid #dce6e0;border-left:6px solid #12a76b;border-radius:14px;padding:22px}.formula code{font-size:17px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid #dce6e0;border-radius:14px;padding:20px}.card h3{margin:0 0 6px;font-size:18px}.card h3 a{color:#0f2a3d;text-decoration:none}.card h3 a:hover{color:#0b7a4d}.card p{margin:0;color:#52626b;font-size:15px}
-.faq{background:#fff;border:1px solid #dce6e0;border-radius:14px;padding:22px}.faq h3{margin:18px 0 4px}.faq h3:first-child{margin-top:0}.faq p{margin:0;color:#52626b}
-footer{background:#0f2a3d;color:#b9cdd0;padding:24px 0;margin-top:20px}footer a{color:#fff}
-@media(max-width:760px){.hero h1{font-size:31px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}nav{display:none}.btn2{display:inline-block;margin:10px 0 0}}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#1c1512;background:#f7f2e7;line-height:1.6}
+a{color:#a3340f}.serif{font-family:Georgia,'Times New Roman',serif}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#6b5d55}
+header{position:sticky;top:0;background:#f7f2e7;border-bottom:1px solid #e5dcc8;z-index:10}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#1c1512;font-size:23px;font-weight:700}.icon{width:36px;height:36px;background:#a3340f;color:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px}.logo em{color:#a3340f;font-style:italic}
+nav a{color:#1c1512;text-decoration:none;margin-left:18px;font-weight:600;font-size:15px}nav a:hover{color:#a3340f}
+.pill{border:1px solid #c9bfa8;border-radius:999px;padding:8px 14px}.cta{background:#a3340f;color:#fff!important;border-radius:999px;padding:10px 18px}
+.hero{padding:34px 0 10px}.eyebrow{font-size:13px;letter-spacing:.12em;color:#6b5d55}.eyebrow b{color:#a3340f}
+h1{font-family:Georgia,serif;font-size:46px;line-height:1.15;margin:12px 0}h1 em{color:#a3340f}
+.sub{color:#5b4f47;font-size:18px;max-width:760px}.statsline{font-family:ui-monospace,monospace;color:#6b5d55;margin:14px 0 26px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px}
+.card{background:#fdfaf3;border:1px solid #e5dcc8;border-radius:14px;box-shadow:0 2px 10px rgba(28,21,18,.05);padding:24px}
+.card h2{font-family:Georgia,serif;margin:0}.card .hint{color:#6b5d55;font-size:14px;margin:4px 0 18px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid #c9bfa8;background:transparent;border-radius:999px;padding:7px 13px;font-weight:600;cursor:pointer}.tab.active{background:#a3340f;color:#fff;border-color:#a3340f}
+label{font-weight:700;display:block;margin:14px 0 5px}input{width:100%;padding:11px 12px;border:1px solid #c9bfa8;border-radius:9px;background:#fff;font-size:16px}.fieldhint{color:#6b5d55;font-size:13px;margin-top:4px}
+.result{border-top:6px solid #a3340f}.result .label{font-size:12px;letter-spacing:.12em;color:#6b5d55}.big{font-family:Georgia,serif;font-size:56px;color:#a3340f;line-height:1.1;margin:6px 0 0}.per{color:#6b5d55;margin-top:0}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.cols div b{display:block}.cols div span{color:#6b5d55;font-size:13px}
+section{padding:30px 0}h2.sec{font-family:Georgia,serif;font-size:30px;margin:0}section .subline{color:#6b5d55;margin:4px 0 20px}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}.row{border-top:1px solid #e5dcc8;padding:14px 0;display:flex;justify-content:space-between;gap:14px;text-decoration:none;color:#1c1512}.row:hover h3{color:#a3340f}.row h3{margin:0;font-size:17px}.row p{margin:2px 0 0;color:#6b5d55;font-size:14px}.arrow{color:#b9ad97}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step .num{font-family:Georgia,serif;font-size:28px;color:#a3340f}.step h3{font-family:Georgia,serif;margin:4px 0}.step p{color:#5b4f47;margin:0}
+details{background:#fdfaf3;border:1px solid #e5dcc8;border-radius:12px;padding:16px 18px;margin-bottom:10px}summary{font-weight:700;cursor:pointer}details p{color:#5b4f47;margin:8px 0 0}
+footer{background:#100907;color:#d8cfc5;padding:36px 0 24px;margin-top:20px}footer a{color:#d8cfc5;text-decoration:none}footer a:hover{color:#fff}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin:14px 0 24px;color:#e8ded2}.footcols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.footcols h4{font-size:12px;letter-spacing:.12em;color:#9d8f83;border-bottom:1px solid #3a2a22;padding-bottom:8px}.footcols a{display:block;margin:7px 0;font-size:15px}
+.copy{border-top:1px solid #3a2a22;margin-top:24px;padding-top:16px;font-family:ui-monospace,monospace;font-size:12px;color:#9d8f83}
+@media(max-width:800px){h1{font-size:33px}.calc,.rows,.steps,.footcols{grid-template-columns:1fr}nav{display:none}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="logo">Energy<span>Toolkit</span></div><nav><a href="https://energytoolkit.de/">Startseite</a><a href="https://energytoolkit.de/stromkosten-berechnen/">Formel</a><a href="https://energytoolkit.de/stromkosten-senken/">Sparen</a></nav></div></header>
-<div class="hero"><div class="wrap">
-<div class="badges"><span>Kostenlos</span><span>Ohne Anmeldung</span><span>0 Tracker</span><span>0 Cookies</span></div>
-<h1>Stromkostenrechner 2026: Stromkosten berechnen &amp; sparen</h1>
-<p>Verbrauch oder Geräteleistung eingeben, Kosten pro Tag, Monat und Jahr sofort sehen. Mit offenen Annahmen, belegten Tarifwerten und Formel-Abgleich. Die Berechnung läuft vollständig in Ihrem Browser.</p>
-<a class="btn" href="https://energytoolkit.de/">Zum Stromkostenrechner auf EnergyToolkit →</a>
-<a class="btn2" href="https://energytoolkit.de/stromkosten-berechnen/">Formel ansehen</a>
-</div></div>
-<main><div class="wrap">
-<div class="stats">
-<div class="stat"><b>66</b><span>Rechner</span></div>
-<div class="stat"><b>0</b><span>Tracker</span></div>
-<div class="stat"><b>0</b><span>Cookies</span></div>
-<div class="stat"><b>37 ct</b><span>Ø Strompreis 2026 (BDEW)</span></div>
+<header><div class="wrap">
+<a class="logo serif" href="https://energytoolkit.de/"><span class="icon">⚡</span><span>Energy<em>Toolkit</em></span></a>
+<nav><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten</a><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner</a><a href="https://energytoolkit.de/balkonkraftwerk-rechner/">Balkonkraftwerk-Rechner</a><a href="https://energytoolkit.de/heizkostenvergleich/">Heizkostenvergleich</a><a class="pill" href="https://energytoolkit.de/">Alle Rechner ⌄</a><a class="cta" href="https://energytoolkit.de/">Jetzt berechnen</a></nav>
+</div></header>
+<main class="wrap">
+<div class="hero">
+<div class="eyebrow"><b>■</b> KOSTENLOS · OHNE ANMELDUNG · RECHNET IN IHREM BROWSER</div>
+<h1>Stromkostenrechner: Was kostet Ihr Strom <em>wirklich?</em></h1>
+<p class="sub">Verbrauch oder Geräteleistung eingeben, Kosten pro Tag, Monat und Jahr sofort sehen. Mit offenen Annahmen, belegten Tarifwerten und Formel-Abgleich.</p>
+<p class="statsline">66 Rechner&nbsp;&nbsp;603 Unit-Tests&nbsp;&nbsp;0 Tracker&nbsp;&nbsp;0 Cookies</p>
+</div>
+<div class="calc">
+<div class="card">
+<h2>Stromkosten berechnen</h2>
+<p class="hint">Ergebnis aktualisiert sich live während Sie tippen.</p>
+<div class="tabs"><button class="tab active" type="button">kWh-Verbrauch</button><button class="tab" type="button">Watt-Leistung</button><button class="tab" type="button">Gerät wählen</button></div>
+<label for="kwh">Jahresverbrauch (kWh)</label>
+<input id="kwh" type="number" value="2920" min="0">
+<p class="fieldhint">Steht auf Ihrer Jahresabrechnung.</p>
+<label for="preis">Arbeitspreis (ct/kWh)</label>
+<input id="preis" type="number" value="37" min="0" step="0.1">
+<p class="fieldhint">Ø Deutschland: 37 ct (BDEW, Herbst 2026). Ihr Wert steht auf der Rechnung.</p>
+<label for="grund">Grundpreis (€/Monat, optional)</label>
+<input id="grund" type="number" value="0" min="0" step="0.1">
+<p class="fieldhint">0 = nur Verbrauchskosten. Ø ~12 €/Monat.</p>
+<p style="margin-top:18px"><a class="cta" style="text-decoration:none" href="https://energytoolkit.de/">Zum vollständigen Rechner →</a></p>
+</div>
+<div class="card result">
+<div class="label">IHRE STROMKOSTEN</div>
+<div class="big" id="jahr">1.080,40 €</div>
+<p class="per">pro Jahr</p>
+<div class="cols">
+<div><b id="monat">90,03 €</b><span>pro Monat</span></div>
+<div><b id="tag">2,96 €</b><span>pro Tag</span></div>
+<div><b id="verb">2.920 kWh</b><span>Verbrauch</span></div>
+</div>
+<p class="mono" id="formel" style="margin-top:20px">2.920 kWh/Jahr × 0,37 €/kWh = 1.080,40 €/Jahr</p>
+<p style="color:#6b5d55;font-size:14px">Alle Angaben ohne Gewähr, unverbindliche Schätzung, keine Energieberatung · <a href="https://energytoolkit.de/methodik/"><b>Details</b></a></p>
+</div>
 </div>
 <section>
-<h2>So werden Stromkosten berechnet</h2>
-<p class="lead">Die komplette Rechnung passt in eine Zeile. Wer nur den Arbeitspreis rechnet, unterschätzt die Jahreskosten oft um 100 bis 200 Euro, weil der Grundpreis fehlt.</p>
-<div class="formula"><code>Jahreskosten = Verbrauch (kWh) × Arbeitspreis (€/kWh) + Grundpreis (€/Monat) × 12</code>
-<p>Beispiel: 2.920 kWh × 0,37 € = 1.080,40 € Verbrauchskosten, plus 12 € Grundpreis × 12 = 144 €, zusammen <strong>1.224,40 € im Jahr</strong>.</p></div>
-</section>
-<section>
-<h2>Alle Rechner im Überblick</h2>
-<p class="lead">Geräte, Heizen, Solar, Tarife, Haushalt und Sparen – jeder Rechner nennt seine Quellen, zeigt seine Formel und arbeitet mit offenen Annahmen.</p>
-<div class="grid">
-<div class="card"><h3><a href="https://energytoolkit.de/">Stromkostenrechner</a></h3><p>Die Startseite: Kosten pro Tag, Monat und Jahr, live beim Tippen.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten berechnen</a></h3><p>Die Formel Schritt für Schritt, mit Watt-Pfad und Verbrauchspfad.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/kwh-erklaert/">Was ist eine Kilowattstunde?</a></h3><p>kW und kWh sauber getrennt, mit Beispielen aus dem Haushalt.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner</a></h3><p>Haushaltsgeräte vergleichen und die echten Stromfresser finden.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/waermepumpe-stromverbrauch/">Wärmepumpe</a></h3><p>Jahresverbrauch aus Heizbedarf und JAZ berechnen.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/balkonkraftwerk-rechner/">Balkonkraftwerk</a></h3><p>Ertrag und Kosten für Mini-PV und 800-Watt-Anlagen durchrechnen.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/stromtarif-vergleich/">Stromtarife vergleichen</a></h3><p>Arbeitspreis und Grundpreis immer zusammen betrachten.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/stromkosten-senken/">Stromkosten senken</a></h3><p>Sparmaßnahmen nach Wirkung gerankt, ehrlich formuliert.</p></div>
-<div class="card"><h3><a href="https://energytoolkit.de/">Alle 66 Rechner</a></h3><p>Das komplette Register auf der Startseite von EnergyToolkit.</p></div>
+<h2 class="sec">Alle 66 Rechner im Register</h2>
+<p class="subline">Jeder Rechner genau einmal: Jede Seite nennt ihre Quellen, rechnet mit offenen Annahmen und zeigt ihre Formel.</p>
+<div class="rows">
+<a class="row" href="https://energytoolkit.de/stromkosten-berechnen/"><span><h3>Stromkosten berechnen</h3><p>Die Formel Schritt für Schritt</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/kwh-erklaert/"><span><h3>Was ist eine Kilowattstunde?</h3><p>kW und kWh sauber getrennt</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/geraete-stromkostenrechner/"><span><h3>Geräte-Stromkostenrechner</h3><p>Haushaltsgeräte vergleichen, Stromfresser finden</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/waermepumpe-stromverbrauch/"><span><h3>Wärmepumpen-Stromverbrauch</h3><p>Aus Heizbedarf und JAZ berechnen</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/balkonkraftwerk-rechner/"><span><h3>Balkonkraftwerk-Rechner</h3><p>Mini-PV und 800-Watt-Anlagen</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/stromtarif-vergleich/"><span><h3>Stromtarife vergleichen</h3><p>Arbeitspreis und Grundpreis zusammen</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/stromkosten-senken/"><span><h3>Stromkosten senken</h3><p>Sparmaßnahmen nach Wirkung gerankt</p></span><span class="arrow">→</span></a>
+<a class="row" href="https://energytoolkit.de/"><span><h3>Alle Rechner auf EnergyToolkit</h3><p>Das komplette Register auf der Startseite</p></span><span class="arrow">→</span></a>
 </div>
 </section>
 <section>
-<div class="faq">
-<h2>Häufige Fragen</h2>
-<h3>Was kostet 1 kWh Strom 2026 in Deutschland?</h3>
-<p>Rund 0,37 €/kWh im bundesweiten Durchschnitt (BDEW, Herbst 2026). Ihr tatsächlicher Arbeitspreis steht auf Ihrer Stromrechnung.</p>
-<h3>Was ist der Unterschied zwischen kW und kWh?</h3>
-<p>Kilowatt ist die Leistung, Kilowattstunden sind die Energie: Leistung × Zeit. Ein 2.000-W-Heizlüfter, der 4 Stunden läuft, verbraucht 8 kWh.</p>
-<h3>Sind die Rechner kostenlos und ohne Anmeldung?</h3>
-<p>Ja. Alle Rechner auf EnergyToolkit sind kostenlos, werbefrei nutzbar und benötigen kein Konto. Ihre Eingaben verlassen Ihr Gerät nicht.</p>
+<h2 class="sec">So funktioniert's</h2>
+<div class="steps" style="margin-top:18px">
+<div class="step"><div class="num">01</div><h3>Verbrauch eingeben</h3><p>Als kWh-Jahreswert, als Watt-Leistung oder über ein Gerät mit belegten Standardwerten.</p></div>
+<div class="step"><div class="num">02</div><h3>Tarif anpassen</h3><p>Arbeitspreis und optionalen Grundpreis von Ihrer Rechnung eintragen. Der Deutschland-Durchschnitt ist vorbelegt.</p></div>
+<div class="step"><div class="num">03</div><h3>Kosten sehen</h3><p>Tage-, Monats- und Jahreskosten sofort, mit Formel-Abgleich, Annahmen und ehrlichen Warnungen bei unüblichen Eingaben.</p></div>
 </div>
 </section>
-</div></main>
-<footer><div class="wrap">EnergyToolkit – kostenlose deutsche Stromkostenrechner. Alle Rechner direkt auf <a href="https://energytoolkit.de/">energytoolkit.de</a>. Alle Angaben ohne Gewähr, unverbindliche Schätzung, keine Energieberatung.</div></footer>
+<section>
+<h2 class="sec">Häufige Fragen</h2>
+<div style="margin-top:18px">
+<details open><summary>Was kostet 1 kWh Strom 2026 in Deutschland?</summary><p>Rund 0,37 €/kWh im bundesweiten Durchschnitt (BDEW-Strompreisanalyse, Herbst 2026). Ihr tatsächlicher Arbeitspreis steht auf Ihrer Stromrechnung.</p></details>
+<details><summary>Wie berechne ich meine Stromkosten?</summary><p>Stromkosten = Verbrauch in kWh × Arbeitspreis in €/kWh, plus Grundpreis × Monate. Beispiel: 2.920 kWh × 0,37 € ergibt 1.080,40 € im Jahr.</p></details>
+<details><summary>Was ist der Unterschied zwischen kW und kWh?</summary><p>Kilowatt ist die Leistung, Kilowattstunden sind die Energie, Leistung × Zeit. Ein 2.000-W-Heizlüfter, der 4 Stunden läuft, verbraucht 8 kWh.</p></details>
+<details><summary>Sind die Rechner kostenlos und ohne Anmeldung?</summary><p>Ja. Alle Rechner auf EnergyToolkit sind kostenlos, werbefrei nutzbar und benötigen kein Konto. Die Berechnung läuft vollständig in Ihrem Browser.</p></details>
+</div>
+</section>
+</main>
+<footer><div class="wrap">
+<a class="logo serif" href="https://energytoolkit.de/" style="color:#fff"><span class="icon">⚡</span><span>Energy<em>Toolkit</em></span></a>
+<div class="trust"><span>✓ 0 € · keine Anmeldung</span><span>✓ 0 Tracker · rechnet nur lokal</span><span>✓ 66 Rechner · Quellen je Seite</span></div>
+<div class="footcols">
+<div><h4>RECHNER</h4><a href="https://energytoolkit.de/">Stromkostenrechner</a><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner</a><a href="https://energytoolkit.de/waermepumpe-stromverbrauch/">Wärmepumpe</a></div>
+<div><h4>RATGEBER</h4><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten berechnen</a><a href="https://energytoolkit.de/kwh-erklaert/">Was ist eine Kilowattstunde?</a><a href="https://energytoolkit.de/stromkosten-senken/">Stromkosten senken</a></div>
+<div><h4>ENERGYTOOLKIT</h4><a href="https://energytoolkit.de/">energytoolkit.de</a><a href="https://energytoolkit.de/methodik/">Methodik</a><a href="https://energytoolkit.de/ueber-uns/">Über uns</a></div>
+</div>
+<div class="copy">© 2026 EnergyToolkit · energytoolkit.de · Alle Berechnungen sind Schätzwerte; Quellen und Methodik auf jeder Rechner-Seite.</div>
+</div></footer>
+<script>
+function fmt(n){return n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'}
+function fmtInt(n){return n.toLocaleString('de-DE')}
+function calc(){
+var k=parseFloat(document.getElementById('kwh').value)||0;
+var p=parseFloat(document.getElementById('preis').value)||0;
+var g=parseFloat(document.getElementById('grund').value)||0;
+var jahr=k*p/100+g*12;
+document.getElementById('jahr').textContent=fmt(jahr);
+document.getElementById('monat').textContent=fmt(jahr/12);
+document.getElementById('tag').textContent=fmt(jahr/365);
+document.getElementById('verb').textContent=fmtInt(k)+' kWh';
+document.getElementById('formel').textContent=fmtInt(k)+' kWh/Jahr × '+p.toLocaleString('de-DE')+' €/kWh = '+fmt(k*p/100)+'/Jahr'+(g?(' + '+fmt(g*12)+'/Jahr Grundpreis'):'');
+}
+['kwh','preis','grund'].forEach(function(id){document.getElementById(id).addEventListener('input',calc)});
+</script>
 </body>
 </html>
