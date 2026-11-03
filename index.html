@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stromkostenrechner | EnergyToolkit</title>
+<title>Stromkostenrechner 2026: Stromkosten berechnen &amp; sparen | EnergyToolkit</title>
 <style>
 :root {
     --bg: #F7F2E7;
@@ -69,7 +69,7 @@ header {
 .logo-text span:first-child { color: var(--text); }
 .logo-text span:last-child { color: var(--accent); font-style: italic; }
 
-nav ul { display: flex; list-items: none; gap: 1.25rem; align-items: center; list-style: none; }
+nav ul { display: flex; gap: 1.25rem; align-items: center; list-style: none; }
 nav a { color: var(--text); font-size: 0.9rem; font-weight: 500; }
 .pill-btn {
     border: 1px solid var(--border);
@@ -85,8 +85,8 @@ nav a { color: var(--text); font-size: 0.9rem; font-weight: 500; }
 }
 
 /* Hero */
-.hero { padding: 4rem 0 3rem; text-align: center; }
-.eyebrow { display: flex; align-items: center; justify-content: center; gap: 0.5rem; color: var(--text-sec); margin-bottom: 1.5rem; }
+.hero { padding: 3rem 0 2.5rem; text-align: left; max-width: 780px; }
+.eyebrow { display: flex; align-items: center; justify-content: flex-start; gap: 0.5rem; color: var(--text-sec); margin-bottom: 1.5rem; }
 .sq { width: 8px; height: 8px; background: var(--accent); }
 h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 1.5rem; }
 h1 i { color: var(--accent); font-style: italic; }
@@ -235,7 +235,8 @@ footer {
 }
 
 @media (max-width: 800px) {
-    nav, .hero-stats { display: none; }
+    nav { display: none; }
+    .hero-stats { font-size: 0.8rem; }
     .calc-grid, .register-grid, .steps-grid, .footer-grid { grid-template-columns: 1fr; }
     h1 { font-size: 2.2rem; }
     .logo-text { font-size: 1.1rem; }
@@ -257,7 +258,7 @@ footer {
                 <li><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten</a></li>
                 <li><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner</a></li>
                 <li><a href="https://energytoolkit.de/balkonkraftwerk-rechner/">Balkonkraftwerk-Rechner</a></li>
-                <li><a href="https://energytoolkit.de/stromtarif-vergleich/" class="pill-btn">Alle Rechner</a></li>
+                <li><a href="https://energytoolkit.de/" class="pill-btn">Alle Rechner</a></li>
                 <li><a href="https://energytoolkit.de/" class="solid-btn">Jetzt berechnen</a></li>
             </ul>
         </nav>
@@ -267,13 +268,14 @@ footer {
 <main class="container">
     <section class="hero">
         <div class="eyebrow small-caps">
-            <div class="sq"></div> KOSTENLOS, OHNE ANMELDUNG, RECHNET IN IHREM BROWSER
+            <div class="sq"></div> KOSTENLOS · OHNE ANMELDUNG · RECHNET IN IHREM BROWSER
         </div>
         <h1>Stromkostenrechner: Was kostet Ihr Strom <i>wirklich?</i></h1>
-        <p class="sub-hero">Berechnen Sie Ihre jaehrlichen Stromkosten basierend auf Ihrem Verbrauch und aktuellem Tarif.</p>
+        <p class="sub-hero">Berechnen Sie Ihre jährlichen Stromkosten basierend auf Ihrem Verbrauch und aktuellem Tarif.</p>
         <div class="hero-stats mono">
             66 Rechner &nbsp;•&nbsp; 603 Unit-Tests &nbsp;•&nbsp; 0 Tracker &nbsp;•&nbsp; 0 Cookies
         </div>
+        <p style="margin-top: 1.5rem;"><a href="https://energytoolkit.de/" class="solid-btn">Jetzt berechnen →</a></p>
     </section>
 
     <section class="calc-grid">
@@ -282,15 +284,36 @@ footer {
             <p class="hint" style="margin-bottom: 1.5rem;">Ergebnis aktualisiert sich live während Sie tippen</p>
             
             <div class="tabs">
-                <button class="tab active">kWh-Verbrauch</button>
-                <button class="tab">Watt-Leistung</button>
-                <button class="tab">Geraet waehlen</button>
+                <button type="button" class="tab active" data-mode="kwh">kWh-Verbrauch</button>
+                <button type="button" class="tab" data-mode="watt">Watt-Leistung</button>
+                <button type="button" class="tab" data-mode="device">Gerät wählen</button>
             </div>
 
             <div class="input-group">
                 <label for="v">Jahresverbrauch (kWh)</label>
                 <input type="number" id="v" value="2920" step="10">
-                <p class="hint">Durchschnitt für 2-3 Personen Haushalt</p>
+                <p class="hint">Durchschnitt für einen 2- bis 3-Personen-Haushalt</p>
+            </div>
+            <div class="input-group" id="group-watt" style="display:none;">
+                <label for="w">Leistung (Watt)</label>
+                <input type="number" id="w" value="2000" step="10">
+                <p class="hint">Steht auf dem Typenschild des Geräts.</p>
+            </div>
+            <div class="input-group" id="group-device" style="display:none;">
+                <label for="dev">Gerät wählen (Beispielwerte)</label>
+                <select id="dev" style="width:100%;padding:11px;border:1px solid var(--border);border-radius:9px;background:#fff;font-size:16px;">
+                    <option value="150">Kühlschrank, 150 W</option>
+                    <option value="100">Fernseher, 100 W</option>
+                    <option value="2200">Wasserkocher, 2.200 W</option>
+                    <option value="2000" selected>Heizlüfter, 2.000 W</option>
+                </select>
+            </div>
+            <div class="input-group" id="group-use" style="display:none;">
+                <label for="h">Stunden pro Tag</label>
+                <input type="number" id="h" value="4" min="0" max="24" step="0.5">
+                <label for="d" style="margin-top:1rem;">Tage pro Jahr</label>
+                <input type="number" id="d" value="182" min="0" max="365">
+                <p class="hint">Verbrauch = Leistung × Stunden × Tage ÷ 1.000.</p>
             </div>
 
             <div class="input-group">
@@ -302,7 +325,7 @@ footer {
             <div class="input-group">
                 <label for="g">Grundpreis (Euro/Monat)</label>
                 <input type="number" id="g" value="0" step="0.5">
-                <p class="hint">Optionale feste Gebuehr Ihres Anbieters</p>
+                <p class="hint">Optionale feste Gebühr Ihres Anbieters</p>
             </div>
 
             <a href="https://energytoolkit.de/" class="solid-btn" style="display: block; text-align: center; margin-top: 2rem;">Detaillierte Analyse</a>
@@ -331,7 +354,7 @@ footer {
                 2.920 kWh/Jahr x 0,37 Euro/kWh = 1.080,40 Euro/Jahr
             </div>
             
-            <p class="hint">Alle Angaben ohne Gewaehr. <a href="https://energytoolkit.de/methodik/" style="text-decoration: underline;">Details zur Berechnung</a></p>
+            <p class="hint">Alle Angaben ohne Gewähr. <a href="https://energytoolkit.de/methodik/" style="text-decoration: underline;">Details zur Berechnung</a></p>
         </div>
     </section>
 
@@ -342,7 +365,7 @@ footer {
 
     <div class="register-grid">
         <a href="https://energytoolkit.de/stromkosten-berechnen/" class="reg-row">
-            <div><span class="reg-title">Allgemeiner Stromkostenrechner</span><span class="reg-desc">Berechnung basierend auf kWh und Tarifdaten</span></div>
+            <div><span class="reg-title">Stromkosten berechnen</span><span class="reg-desc">Berechnung basierend auf kWh und Tarifdaten</span></div>
             <div class="arrow">→</div>
         </a>
         <a href="https://energytoolkit.de/kwh-erklaert/" class="reg-row">
@@ -358,7 +381,7 @@ footer {
             <div class="arrow">→</div>
         </a>
         <a href="https://energytoolkit.de/balkonkraftwerk-rechner/" class="reg-row">
-            <div><span class="reg-title">Balkonkraftwerk Ertrag</span><span class="reg-desc">Wie viel sparen Sie mit Solar am Gelaender?</span></div>
+            <div><span class="reg-title">Balkonkraftwerk Ertrag</span><span class="reg-desc">Wie viel sparen Sie mit Solar am Geländer?</span></div>
             <div class="arrow">→</div>
         </a>
         <a href="https://energytoolkit.de/stromtarif-vergleich/" class="reg-row">
@@ -366,11 +389,11 @@ footer {
             <div class="arrow">→</div>
         </a>
         <a href="https://energytoolkit.de/stromkosten-senken/" class="reg-row">
-            <div><span class="reg-title">Sparpotenzial-Rechner</span><span class="reg-desc">Wo koennen Sie am einfachsten Kosten sparen?</span></div>
+            <div><span class="reg-title">Sparpotenzial-Rechner</span><span class="reg-desc">Wo können Sie am einfachsten Kosten sparen?</span></div>
             <div class="arrow">→</div>
         </a>
         <a href="https://energytoolkit.de/" class="reg-row">
-            <div><span class="reg-title">Alle weiteren Rechner</span><span class="reg-desc">Vollstaendige Uebersicht der Werkzeuge</span></div>
+            <div><span class="reg-title">Alle weiteren Rechner</span><span class="reg-desc">Vollständige Übersicht der Werkzeuge</span></div>
             <div class="arrow">→</div>
         </a>
     </div>
@@ -379,7 +402,7 @@ footer {
         <div class="step">
             <span class="step-num">01</span>
             <h3 class="serif">Verbrauch eingeben</h3>
-            <p>Geben Sie Ihren jaehrlichen Verbrauch in kWh an (zu finden auf Ihrer letzten Rechnung).</p>
+            <p>Geben Sie Ihren jährlichen Verbrauch in kWh an (zu finden auf Ihrer letzten Rechnung).</p>
         </div>
         <div class="step">
             <span class="step-num">02</span>
@@ -397,7 +420,7 @@ footer {
         <h2 class="serif" style="margin-bottom: 2rem; text-align: center;">Häufige Fragen</h2>
         <details>
             <summary>Was kostet 1 kWh Strom 2026 in Deutschland?</summary>
-            <div class="faq-ans">Der Durchschnittspreis liegt aktuell bei rund 0,37 Euro/kWh (BDEW Herbst 2026). Die Preise koennen je nach Region und Anbieter stark variieren.</div>
+            <div class="faq-ans">Der Durchschnittspreis liegt aktuell bei rund 0,37 Euro/kWh (BDEW Herbst 2026). Die Preise können je nach Region und Anbieter stark variieren.</div>
         </details>
         <details>
             <summary>Wie berechne ich meine Stromkosten?</summary>
@@ -405,11 +428,11 @@ footer {
         </details>
         <details>
             <summary>Was ist der Unterschied zwischen kW und kWh?</summary>
-            <div class="faq-ans">kW (Kilowatt) beschreibt die Leistung, kWh (Kilowattstunde) beschreibt die Energie. Ein Geraet mit 2.000 W (2 kW) Leistung verbraucht in 4 Stunden Betrieb genau 8 kWh Energie.</div>
+            <div class="faq-ans">kW (Kilowatt) beschreibt die Leistung, kWh (Kilowattstunde) beschreibt die Energie. Ein Gerät mit 2.000 W (2 kW) Leistung verbraucht in 4 Stunden Betrieb genau 8 kWh Energie.</div>
         </details>
         <details>
             <summary>Sind die Rechner kostenlos und ohne Anmeldung?</summary>
-            <div class="faq-ans">Ja, alle Rechner auf EnergyToolkit sind vollstaendig kostenlos. Wir erheben keine Daten, die Berechnung findet ausschliesslich lokal in Ihrem Browser statt.</div>
+            <div class="faq-ans">Ja, alle Rechner auf EnergyToolkit sind vollständig kostenlos. Wir erheben keine Daten, die Berechnung findet ausschließlich lokal in Ihrem Browser statt.</div>
         </details>
     </section>
 </main>
@@ -424,9 +447,9 @@ footer {
                 <div class="logo-text serif"><span style="color:white">Energy</span><span style="color:var(--accent)">Toolkit</span></div>
             </div>
             <p class="footer-tagline">Unabhängige Werkzeuge für die Energiewende.</p>
-            <p class="trust-line">0 Euro, keine Anmeldung</p>
-            <p class="trust-line">0 Tracker, rechnet nur lokal</p>
-            <p class="trust-line">66 Rechner, Quellen je Seite</p>
+            <p class="trust-line">✓ 0 Euro, keine Anmeldung</p>
+            <p class="trust-line">✓ 0 Tracker, rechnet nur lokal</p>
+            <p class="trust-line">✓ 66 Rechner, Quellen je Seite</p>
         </div>
         <div>
             <div class="small-caps footer-head">RECHNER</div>
@@ -439,7 +462,7 @@ footer {
         <div>
             <div class="small-caps footer-head">WISSEN</div>
             <ul class="footer-links">
-                <li><a href="https://energytoolkit.de/kwh-erklaert/">kWh Erklaerung</a></li>
+                <li><a href="https://energytoolkit.de/kwh-erklaert/">kWh Erklärung</a></li>
                 <li><a href="https://energytoolkit.de/stromkosten-senken/">Strom sparen</a></li>
                 <li><a href="https://energytoolkit.de/waermepumpe-stromverbrauch/">Wärmepumpen</a></li>
             </ul>
@@ -447,14 +470,14 @@ footer {
         <div>
             <div class="small-caps footer-head">PROJEKT</div>
             <ul class="footer-links">
-                <li><a href="https://energytoolkit.de/ueber-uns/">Ueber uns</a></li>
+                <li><a href="https://energytoolkit.de/ueber-uns/">Über uns</a></li>
                 <li><a href="https://energytoolkit.de/methodik/">Methodik</a></li>
                 <li><a href="https://energytoolkit.de/">Startseite</a></li>
             </ul>
         </div>
     </div>
     <div class="container footer-bottom mono">
-        &copy; 2026 EnergyToolkit, energytoolkit.de. Alle Berechnungen sind Schaetzwerte; Quellen und Methodik auf jeder Rechner-Seite.
+        &copy; 2026 EnergyToolkit, energytoolkit.de. Alle Berechnungen sind Schätzwerte; Quellen und Methodik auf jeder Rechner-Seite.
     </div>
 </footer>
 
@@ -462,40 +485,52 @@ footer {
 const vIn = document.getElementById('v');
 const aIn = document.getElementById('a');
 const gIn = document.getElementById('g');
-
+const wIn = document.getElementById('w');
+const hIn = document.getElementById('h');
+const dIn = document.getElementById('d');
+const devIn = document.getElementById('dev');
 const resTotal = document.getElementById('res-total');
 const resMonth = document.getElementById('res-month');
 const resDay = document.getElementById('res-day');
 const resKwh = document.getElementById('res-kwh');
 const formula = document.getElementById('formula');
-
+let mode = 'kwh';
 function fmt(num) {
     return num.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
-
 function calc() {
-    const v = parseFloat(vIn.value) || 0;
+    let v;
+    if (mode === 'kwh') {
+        v = parseFloat(vIn.value) || 0;
+    } else {
+        const watts = mode === 'device' ? (parseFloat(devIn.value) || 0) : (parseFloat(wIn.value) || 0);
+        const hours = parseFloat(hIn.value) || 0;
+        const days = parseFloat(dIn.value) || 0;
+        v = watts * hours * days / 1000;
+    }
     const a = parseFloat(aIn.value) || 0;
     const g = parseFloat(gIn.value) || 0;
-    
     const total = (v * (a / 100)) + (g * 12);
-    const month = total / 12;
-    const day = total / 365;
-    
     resTotal.innerText = fmt(total);
-    resMonth.innerText = fmt(month) + ' Euro';
-    resDay.innerText = fmt(day) + ' Euro';
+    resMonth.innerText = fmt(total / 12) + ' Euro';
+    resDay.innerText = fmt(total / 365) + ' Euro';
     resKwh.innerText = v.toLocaleString('de-DE') + ' kWh';
-    
-    let fStr = `${v.toLocaleString('de-DE')} kWh/Jahr x ${fmt(a/100)} Euro/kWh`;
-    if (g > 0) {
-        fStr += ` + (${fmt(g)} Euro x 12 Monate)`;
-    }
-    fStr += ` = ${fmt(total)} Euro/Jahr`;
+    let fStr = v.toLocaleString('de-DE') + ' kWh/Jahr x ' + fmt(a/100) + ' Euro/kWh';
+    if (g > 0) { fStr += ' + (' + fmt(g) + ' Euro x 12 Monate)'; }
+    fStr += ' = ' + fmt(total) + ' Euro/Jahr';
     formula.innerText = fStr;
 }
-
-[vIn, aIn, gIn].forEach(el => el.addEventListener('input', calc));
+function setMode(m) {
+    mode = m;
+    document.querySelectorAll('.tab').forEach(function(b){ b.classList.toggle('active', b.dataset.mode === m); });
+    document.getElementById('group-watt').style.display = (m === 'watt') ? 'block' : 'none';
+    document.getElementById('group-device').style.display = (m === 'device') ? 'block' : 'none';
+    document.getElementById('group-use').style.display = (m === 'kwh') ? 'none' : 'block';
+    vIn.closest('.input-group').style.display = (m === 'kwh') ? 'block' : 'none';
+    calc();
+}
+document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.dataset.mode); }); });
+[vIn, aIn, gIn, wIn, hIn, dIn, devIn].forEach(function(el){ el.addEventListener('input', calc); el.addEventListener('change', calc); });
 calc();
 </script>
 
