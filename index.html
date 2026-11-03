@@ -3,27 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EnergyToolkit – Stromkostenrechner für Deutschland</title>
+<title>Stromkostenrechner 2026: Stromkosten berechnen &amp; sparen – EnergyToolkit</title>
 <meta name="description" content="EnergyToolkit ist eine kostenlose deutsche Sammlung von Stromkostenrechnern: Stromkosten pro Tag, Monat und Jahr berechnen, ohne Anmeldung, ohne Tracker, direkt im Browser.">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#17222b;background:#f4f7f5;line-height:1.6}
+a{color:#0b7a4d}header{background:#0f2a3d;color:#fff}header .wrap,main .wrap,footer .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.logo{font-weight:800;font-size:22px;letter-spacing:.2px}.logo span{color:#2fd08a}
+nav a{color:#d7e6de;text-decoration:none;margin-left:18px;font-weight:600}nav a:hover{color:#fff}
+.hero{background:#0f2a3d;color:#fff;padding:28px 0 48px}.hero h1{font-size:42px;line-height:1.15;margin:0 0 12px;max-width:720px}.hero p{color:#cfe3d8;font-size:18px;max-width:720px;margin:0 0 22px}
+.badges span{display:inline-block;background:#14344a;border:1px solid #2a4a5e;color:#d7e6de;border-radius:999px;padding:5px 12px;margin:0 8px 8px 0;font-size:14px}
+.btn{display:inline-block;background:#12a76b;color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:10px}.btn:hover{background:#0d8a57}
+.btn2{display:inline-block;border:1px solid #7fb69e;color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;margin-left:10px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-26px}.stat{background:#fff;border-radius:14px;padding:18px;box-shadow:0 4px 18px rgba(15,42,61,.08);text-align:center}.stat b{font-size:26px;color:#0f2a3d;display:block}.stat span{color:#5b6b73;font-size:14px}
+section{padding:34px 0}h2{font-size:28px;margin:0 0 8px;color:#0f2a3d}.lead{color:#52626b;max-width:760px;margin:0 0 20px}
+.formula{background:#fff;border:1px solid #dce6e0;border-left:6px solid #12a76b;border-radius:14px;padding:22px}.formula code{font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid #dce6e0;border-radius:14px;padding:20px}.card h3{margin:0 0 6px;font-size:18px}.card h3 a{color:#0f2a3d;text-decoration:none}.card h3 a:hover{color:#0b7a4d}.card p{margin:0;color:#52626b;font-size:15px}
+.faq{background:#fff;border:1px solid #dce6e0;border-radius:14px;padding:22px}.faq h3{margin:18px 0 4px}.faq h3:first-child{margin-top:0}.faq p{margin:0;color:#52626b}
+footer{background:#0f2a3d;color:#b9cdd0;padding:24px 0;margin-top:20px}footer a{color:#fff}
+@media(max-width:760px){.hero h1{font-size:31px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}nav{display:none}.btn2{display:inline-block;margin:10px 0 0}}
+</style>
 </head>
 <body>
-<h1>EnergyToolkit – Stromkostenrechner für Deutschland</h1>
-<p><a href="https://energytoolkit.de/">EnergyToolkit</a> ist eine kostenlose, werbefreie Sammlung von 66 Rechnern rund um Stromkosten, Heizen, Solar und Energiesparen in Deutschland. Alle Rechner laufen ohne Anmeldung und ohne Cookies direkt im Browser. Die Eingaben verlassen das eigene Gerät nicht.</p>
+<header><div class="wrap"><div class="logo">Energy<span>Toolkit</span></div><nav><a href="https://energytoolkit.de/">Startseite</a><a href="https://energytoolkit.de/stromkosten-berechnen/">Formel</a><a href="https://energytoolkit.de/stromkosten-senken/">Sparen</a></nav></div></header>
+<div class="hero"><div class="wrap">
+<div class="badges"><span>Kostenlos</span><span>Ohne Anmeldung</span><span>0 Tracker</span><span>0 Cookies</span></div>
+<h1>Stromkostenrechner 2026: Stromkosten berechnen &amp; sparen</h1>
+<p>Verbrauch oder Geräteleistung eingeben, Kosten pro Tag, Monat und Jahr sofort sehen. Mit offenen Annahmen, belegten Tarifwerten und Formel-Abgleich. Die Berechnung läuft vollständig in Ihrem Browser.</p>
+<a class="btn" href="https://energytoolkit.de/">Zum Stromkostenrechner auf EnergyToolkit →</a>
+<a class="btn2" href="https://energytoolkit.de/stromkosten-berechnen/">Formel ansehen</a>
+</div></div>
+<main><div class="wrap">
+<div class="stats">
+<div class="stat"><b>66</b><span>Rechner</span></div>
+<div class="stat"><b>0</b><span>Tracker</span></div>
+<div class="stat"><b>0</b><span>Cookies</span></div>
+<div class="stat"><b>37 ct</b><span>Ø Strompreis 2026 (BDEW)</span></div>
+</div>
+<section>
 <h2>So werden Stromkosten berechnet</h2>
-<p>Die Grundformel lautet: Stromkosten = Verbrauch in kWh × Arbeitspreis in Euro pro kWh, plus Grundpreis × Monate. Beispiel: 2.920 kWh × 0,37 Euro = 1.080,40 Euro im Jahr, zuzüglich Grundpreis. Wer nur den Arbeitspreis rechnet, unterschätzt die Jahreskosten oft um 100 bis 200 Euro.</p>
-<h2>Die wichtigsten Rechner auf EnergyToolkit</h2>
-<ul>
-<li><a href="https://energytoolkit.de/">Stromkostenrechner – Startseite von EnergyToolkit</a></li>
-<li><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten berechnen: die Formel Schritt für Schritt</a></li>
-<li><a href="https://energytoolkit.de/kwh-erklaert/">Was ist eine Kilowattstunde? kWh einfach erklärt</a></li>
-<li><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner: Haushaltsgeräte vergleichen</a></li>
-<li><a href="https://energytoolkit.de/waermepumpe-stromverbrauch/">Wärmepumpen-Stromverbrauch aus Heizbedarf und JAZ berechnen</a></li>
-<li><a href="https://energytoolkit.de/balkonkraftwerk-rechner/">Balkonkraftwerk-Rechner und 800-Watt-Rechner</a></li>
-<li><a href="https://energytoolkit.de/stromtarif-vergleich/">Stromtarife vergleichen: Arbeitspreis und Grundpreis zusammen betrachten</a></li>
-<li><a href="https://energytoolkit.de/stromkosten-senken/">Stromkosten senken: Sparmaßnahmen nach Wirkung</a></li>
-</ul>
-<h2>Für wen ist das gedacht?</h2>
-<p>Für Haushalte in Deutschland, die ihre Stromrechnung prüfen, ein neues Gerät bewerten, Heizkosten vergleichen oder die Kosten einer Wärmepumpe, eines E-Autos oder eines Balkonkraftwerks realistisch durchrechnen wollen. Jede Seite nennt ihre Quellen, zeigt ihre Formel und arbeitet mit offenen Annahmen.</p>
-<p>Alle Rechner direkt auf <a href="https://energytoolkit.de/">energytoolkit.de</a>.</p>
+<p class="lead">Die komplette Rechnung passt in eine Zeile. Wer nur den Arbeitspreis rechnet, unterschätzt die Jahreskosten oft um 100 bis 200 Euro, weil der Grundpreis fehlt.</p>
+<div class="formula"><code>Jahreskosten = Verbrauch (kWh) × Arbeitspreis (€/kWh) + Grundpreis (€/Monat) × 12</code>
+<p>Beispiel: 2.920 kWh × 0,37 € = 1.080,40 € Verbrauchskosten, plus 12 € Grundpreis × 12 = 144 €, zusammen <strong>1.224,40 € im Jahr</strong>.</p></div>
+</section>
+<section>
+<h2>Alle Rechner im Überblick</h2>
+<p class="lead">Geräte, Heizen, Solar, Tarife, Haushalt und Sparen – jeder Rechner nennt seine Quellen, zeigt seine Formel und arbeitet mit offenen Annahmen.</p>
+<div class="grid">
+<div class="card"><h3><a href="https://energytoolkit.de/">Stromkostenrechner</a></h3><p>Die Startseite: Kosten pro Tag, Monat und Jahr, live beim Tippen.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/stromkosten-berechnen/">Stromkosten berechnen</a></h3><p>Die Formel Schritt für Schritt, mit Watt-Pfad und Verbrauchspfad.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/kwh-erklaert/">Was ist eine Kilowattstunde?</a></h3><p>kW und kWh sauber getrennt, mit Beispielen aus dem Haushalt.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/geraete-stromkostenrechner/">Geräte-Stromkostenrechner</a></h3><p>Haushaltsgeräte vergleichen und die echten Stromfresser finden.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/waermepumpe-stromverbrauch/">Wärmepumpe</a></h3><p>Jahresverbrauch aus Heizbedarf und JAZ berechnen.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/balkonkraftwerk-rechner/">Balkonkraftwerk</a></h3><p>Ertrag und Kosten für Mini-PV und 800-Watt-Anlagen durchrechnen.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/stromtarif-vergleich/">Stromtarife vergleichen</a></h3><p>Arbeitspreis und Grundpreis immer zusammen betrachten.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/stromkosten-senken/">Stromkosten senken</a></h3><p>Sparmaßnahmen nach Wirkung gerankt, ehrlich formuliert.</p></div>
+<div class="card"><h3><a href="https://energytoolkit.de/">Alle 66 Rechner</a></h3><p>Das komplette Register auf der Startseite von EnergyToolkit.</p></div>
+</div>
+</section>
+<section>
+<div class="faq">
+<h2>Häufige Fragen</h2>
+<h3>Was kostet 1 kWh Strom 2026 in Deutschland?</h3>
+<p>Rund 0,37 €/kWh im bundesweiten Durchschnitt (BDEW, Herbst 2026). Ihr tatsächlicher Arbeitspreis steht auf Ihrer Stromrechnung.</p>
+<h3>Was ist der Unterschied zwischen kW und kWh?</h3>
+<p>Kilowatt ist die Leistung, Kilowattstunden sind die Energie: Leistung × Zeit. Ein 2.000-W-Heizlüfter, der 4 Stunden läuft, verbraucht 8 kWh.</p>
+<h3>Sind die Rechner kostenlos und ohne Anmeldung?</h3>
+<p>Ja. Alle Rechner auf EnergyToolkit sind kostenlos, werbefrei nutzbar und benötigen kein Konto. Ihre Eingaben verlassen Ihr Gerät nicht.</p>
+</div>
+</section>
+</div></main>
+<footer><div class="wrap">EnergyToolkit – kostenlose deutsche Stromkostenrechner. Alle Rechner direkt auf <a href="https://energytoolkit.de/">energytoolkit.de</a>. Alle Angaben ohne Gewähr, unverbindliche Schätzung, keine Energieberatung.</div></footer>
 </body>
 </html>
